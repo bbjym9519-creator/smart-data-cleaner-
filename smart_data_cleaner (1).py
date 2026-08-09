@@ -6,6 +6,7 @@ from pathlib import Path
 
 import pandas as pd
 import streamlit as st
+from openai import OpenAI
 
 st.set_page_config(page_title="Smart Data Cleaner", page_icon="🧹", layout="wide")
 
