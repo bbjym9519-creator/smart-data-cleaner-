@@ -1,4 +1,4 @@
-import io
+st io
 import os
 import json
 import re
@@ -167,9 +167,9 @@ if uploaded:
         p = profile(df)
         st.dataframe(p, use_container_width=True)
         if client:
-    st.subheader("🤖 تحليل ذكي للبيانات")
+         st.subheader("🤖 تحليل ذكي للبيانات")
 
-    if st.button("حلّل البيانات بالذكاء الاصطناعي"):
+      if st.button("حلّل البيانات بالذكاء الاصطناعي"):
         with st.spinner("جاري تحليل جودة البيانات..."):
             analysis = ai_analyze(df)
 
