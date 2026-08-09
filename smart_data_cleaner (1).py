@@ -13,7 +13,7 @@ st.set_page_config(page_title="Smart Data Cleaner", page_icon="🧹", layout="wi
 st.title("🧹 Smart Data Cleaner")
 st.caption("ارفع Excel أو CSV → افحص البيانات → نظّفها → حمّل الملف النظيف")
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_API_KEY = st.secrets.get("OPENAI_API_KEY", os.getenv("OPENAI_API_KEY"))
 
 uploaded = st.file_uploader(
     "ارفع ملف البيانات",
