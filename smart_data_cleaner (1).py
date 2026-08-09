@@ -48,6 +48,7 @@ def load_file(file):
 
     prompt = f"""
 أنت محلل بيانات محترف.
+
 حلل ملخص جودة البيانات التالي:
 
 {json.dumps(summary, ensure_ascii=False, default=str)}
