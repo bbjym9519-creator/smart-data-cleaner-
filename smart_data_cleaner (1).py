@@ -34,6 +34,40 @@ def load_file(file):
         raise ValueError("تعذر قراءة ملف CSV. جرّب حفظه بصيغة UTF-8.")
     file.seek(0)
     return pd.read_excel(file)
+    def ai_analyze(df):
+    if client is None:
+        return "لم يتم إعداد OpenAI API Key."
+
+    summary = {
+        "rows": len(df),
+        "columns": list(df.columns),
+        "missing_values": df.isna().sum().to_dict(),
+        "duplicate_rows": int(df.duplicated().sum()),
+        "data_types": df.dtypes.astype(str).to_dict(),
+    }
+
+    prompt = f"""
+أنت محلل بيانات محترف.
+حلل ملخص جودة البيانات التالي:
+
+{json.dumps(summary, ensure_ascii=False, default=str)}
+
+أعطني:
+1. أهم مشاكل جودة البيانات.
+2. مدى خطورة كل مشكلة.
+3. السبب المحتمل.
+4. أفضل طريقة لمعالجتها.
+5. ثلاث توصيات عملية للمحلل.
+
+اكتب الإجابة بالعربية وبشكل واضح ومنظم.
+"""
+
+    response = client.responses.create(
+        model="gpt-5-mini",
+        input=prompt
+    )
+
+    return response.output_text
 
 def profile(df):
     rows = []
