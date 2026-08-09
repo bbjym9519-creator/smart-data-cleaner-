@@ -166,17 +166,7 @@ if uploaded:
         st.subheader("ملخص جودة البيانات")
         p = profile(df)
         st.dataframe(p, use_container_width=True)
-        if client:
-         st.subheader("🤖 تحليل ذكي للبيانات")
-
-      if st.button("حلّل البيانات بالذكاء الاصطناعي"):
-        with st.spinner("جاري تحليل جودة البيانات..."):
-            analysis = ai_analyze(df)
-
-        st.markdown("### 📋 تقرير AI")
-        st.write(analysis)
-else:
-    st.info("التحليل بالذكاء الاصطناعي غير مفعّل.")
+        
         st.subheader("عينة من البيانات")
         st.dataframe(df.head(20), use_container_width=True)
 
