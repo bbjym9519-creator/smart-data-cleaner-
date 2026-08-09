@@ -35,7 +35,7 @@ def load_file(file):
     file.seek(0)
     return pd.read_excel(file)
     def ai_analyze(df):
-    if client is None:
+      if client is None:
         return "لم يتم إعداد OpenAI API Key."
 
     summary = {
