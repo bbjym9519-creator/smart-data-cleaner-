@@ -14,7 +14,7 @@ st.title("🧹 Smart Data Cleaner")
 st.caption("ارفع Excel أو CSV → افحص البيانات → نظّفها → حمّل الملف النظيف")
 
 OPENAI_API_KEY = st.secrets.get("OPENAI_API_KEY", os.getenv("OPENAI_API_KEY"))
-
+client = OpenAI(api_key=OPENAI_API_KEY) if OPENAI_API_KEY else None
 uploaded = st.file_uploader(
     "ارفع ملف البيانات",
     type=["csv", "xlsx", "xls"],
